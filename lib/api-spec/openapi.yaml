@@ -10,6 +10,8 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: roast
+    description: Roast operations
 paths:
   /healthz:
     get:
@@ -24,6 +26,43 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /roast:
+    post:
+      operationId: generateRoast
+      tags: [roast]
+      summary: Generate a roast for a GitHub user
+      description: Fetches public repos for a GitHub username and generates a funny roast using Gemini AI
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RoastInput"
+      responses:
+        "200":
+          description: Roast generated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RoastResult"
+        "404":
+          description: GitHub user not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "422":
+          description: Unprocessable (e.g. no public repos)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
 components:
   schemas:
     HealthStatus:
@@ -33,4 +72,60 @@ components:
           type: string
       required:
         - status
-
+    RoastInput:
+      type: object
+      required:
+        - username
+        - style
+      properties:
+        username:
+          type: string
+          description: GitHub username to roast
+        style:
+          type: string
+          enum: [normal, corporate, pirate, haiku]
+          description: The style of roast to generate
+    RoastResult:
+      type: object
+      required:
+        - roast
+        - username
+        - avatarUrl
+        - repoCount
+        - topRepos
+      properties:
+        roast:
+          type: string
+          description: The generated roast text
+        username:
+          type: string
+        avatarUrl:
+          type: string
+        repoCount:
+          type: integer
+        topRepos:
+          type: array
+          items:
+            $ref: "#/components/schemas/RepoSummary"
+    RepoSummary:
+      type: object
+      required:
+        - name
+        - language
+        - stars
+      properties:
+        name:
+          type: string
+        language:
+          type: ["string", "null"]
+        stars:
+          type: integer
+        description:
+          type: ["string", "null"]
+    ErrorResponse:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
