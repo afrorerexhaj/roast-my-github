@@ -127,7 +127,7 @@ router.post("/roast", async (req, res): Promise<void> => {
   req.log.info({ username, style }, "Generating roast");
 
   const response = await ai.models.generateContent({
-    model: "gemini-1.5-flash",
+    model: "gemini-2.5-flash",
     contents: [{ role: "user", parts: [{ text: prompt }] }],
     config: { maxOutputTokens: 8192 },
   });
