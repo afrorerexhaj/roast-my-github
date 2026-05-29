@@ -64,7 +64,7 @@ export default function Home() {
           setRoastData(result);
         },
         onError: (error: any) => {
-          const apiError = error?.response?.data?.error || "Failed to generate roast. Try again.";
+          const apiError = error?.data?.error || error?.message || "Failed to generate roast. Try again.";
           setErrorMsg(apiError);
         },
       }
