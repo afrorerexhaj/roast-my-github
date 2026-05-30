@@ -4,7 +4,7 @@ An AI-powered web app that generates brutally funny roasts of any GitHub user's 
 
 **Live demo:** [git-hub-roast-master--rexhajafrore02.replit.app](https://git-hub-roast-master--rexhajafrore02.replit.app/)
 
-[![Deploy on Replit](https://replit.com/badge/github/afrorerexhaj/roast-my-github)](https://replit.com/new/github/afrorerexhaj/roast-my-github)
+[![Deploy on Replit](https://img.shields.io/badge/Deploy%20on-Replit-F26207?style=for-the-badge&logo=replit&logoColor=white)](https://replit.com/new/github/afrorerexhaj/roast-my-github)
 
 ---
 
