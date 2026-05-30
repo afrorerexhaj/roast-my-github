@@ -119,6 +119,16 @@ Style instructions per mode:
 
 ---
 
+## Prompts Used
+
+This app was built using [Replit Agent](https://replit.com/agent). Below are the exact prompts used during development.
+
+**Prompt 1 — Initial build:**
+
+> Build a "Roast My GitHub" web app. The user enters a GitHub username, the app fetches their public repos using the GitHub API, then generates a funny roast based on their repos using the Gemini API (gemini-1.5-flash model). Include roast style options: Normal, Corporate Jargon, Pirate, and Haiku. Show a loading state while fetching. Handle errors gracefully (user not found, private profile, etc). Make the UI dark themed and fun looking.
+
+---
+
 ## What I'd Do With More Time
 
 **Better GitHub data.** The current implementation only uses repo names, languages, star counts, and descriptions. With more time I'd pull in commit frequency, language breakdown percentages, longest streak without a commit, README quality score, and issue/PR activity — the more data, the more personalised and savage the roast.
