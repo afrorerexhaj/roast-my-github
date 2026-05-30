@@ -121,11 +121,25 @@ Style instructions per mode:
 
 ## Prompts Used
 
-This app was built using [Replit Agent](https://replit.com/agent). Below are the exact prompts used during development.
+This app was built using [Replit Agent](https://replit.com/agent). Below are the exact prompts and fixes applied during the session.
 
 **Prompt 1 — Initial build:**
 
 > Build a "Roast My GitHub" web app. The user enters a GitHub username, the app fetches their public repos using the GitHub API, then generates a funny roast based on their repos using the Gemini API (gemini-1.5-flash model). Include roast style options: Normal, Corporate Jargon, Pirate, and Haiku. Show a loading state while fetching. Handle errors gracefully (user not found, private profile, etc). Make the UI dark themed and fun looking.
+
+**Fix 1 — Gemini model not found:**
+
+After the initial build, the `gemini-1.5-flash` model returned a 404 from the API (`models/gemini-1.5-flash is not found for API version v1beta`). Updated the model in `artifacts/api-server/src/routes/roast/index.ts` to `gemini-2.5-flash`, which is the current supported version.
+
+**Fix 2 — "Failed to generate roast" error in production:**
+
+The deployed app showed a generic "Failed to generate roast" error for all API failures (user not found, no public repos, etc). Root cause: the frontend error handler read `error?.response?.data?.error`, but the generated API client (`ApiError` class in `custom-fetch.ts`) stores the parsed response body at `error.data`, not `error.response.data` — `error.response` is the raw `Response` object. Fixed by changing the error path to `error?.data?.error || error?.message`.
+
+**Prompt 2 — UI tweaks:**
+
+> Remove the subtitle text "Brutal, AI-generated reality checks for your public repositories." from the homepage completely. And beside "torvalds" write only "name".
+
+Removed the subtitle `<motion.p>` element entirely and changed the username input placeholder from `"torvalds"` to `"name"`.
 
 ---
 
