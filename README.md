@@ -58,7 +58,7 @@ To publish your fork, click **Publish** in the top-right corner and add your own
 ### Setup
 
 ```bash
-git clone https://github.com/yourusername/roast-my-github
+git clone https://github.com/afrorerexhaj/roast-my-github
 cd roast-my-github
 pnpm install
 ```
