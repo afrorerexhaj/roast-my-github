@@ -89,7 +89,7 @@ export default function Home() {
             className="text-4xl md:text-6xl font-bold tracking-tight font-sans"
             data-testid="text-app-title"
           >
-            Roast My GitHub <span className="inline-block hover:scale-125 transition-transform cursor-default">🔥</span>
+            Roast My GitHub
           </motion.h1>
         </div>
 

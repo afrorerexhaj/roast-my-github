@@ -1,4 +1,4 @@
-# Roast My GitHub 🔥
+# Roast My GitHub
 
 An AI-powered web app that generates brutally funny roasts of any GitHub user's public repositories. Enter a username, pick a roast style, and watch Gemini AI tear apart years of questionable coding decisions.
 
