@@ -91,14 +91,6 @@ export default function Home() {
           >
             Roast My GitHub <span className="inline-block hover:scale-125 transition-transform cursor-default">🔥</span>
           </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.1 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-xl mx-auto"
-          >
-            Brutal, AI-generated reality checks for your public repositories.
-          </motion.p>
         </div>
 
         {/* Main Content Area */}
@@ -125,7 +117,7 @@ export default function Home() {
                                 <div className="relative flex items-center">
                                   <Github className="absolute left-3 h-5 w-5 text-muted-foreground" />
                                   <Input
-                                    placeholder="torvalds"
+                                    placeholder="name"
                                     className="pl-10 h-14 text-lg font-mono bg-background/50 focus-visible:ring-primary/50"
                                     data-testid="input-username"
                                     {...field}
