@@ -32,6 +32,19 @@ Results include the user's avatar, repo count, the roast itself, and a "Prime Of
 
 ---
 
+## Forking on Replit
+
+1. Click **Fork** on the Replit project page
+2. Open the **Secrets** tab (lock icon in the sidebar)
+3. Add a secret: `GEMINI_API_KEY` → your key from [aistudio.google.com/apikey](https://aistudio.google.com/apikey) (free)
+4. The workflows start automatically — the app will be live in the preview pane within ~30 seconds
+
+That's it. No database, no extra config, no `.env` files needed.
+
+To publish your fork, click **Publish** in the top-right corner and add your own `GEMINI_API_KEY` to the deployment secrets when prompted.
+
+---
+
 ## Running Locally
 
 ### Prerequisites
