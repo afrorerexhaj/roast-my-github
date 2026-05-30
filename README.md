@@ -2,7 +2,7 @@
 
 An AI-powered web app that generates brutally funny roasts of any GitHub user's public repositories. Enter a username, pick a roast style, and watch Gemini AI tear apart years of questionable coding decisions.
 
-**Live demo:** [roast-my-github.replit.app](https://roast-my-github.replit.app)
+**Live demo:** [git-hub-roast-master--rexhajafrore02.replit.app](https://git-hub-roast-master--rexhajafrore02.replit.app/)
 
 ---
 
