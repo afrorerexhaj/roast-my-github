@@ -1,10 +1,10 @@
 # Roast My GitHub
 
-An AI-powered web app that generates brutally funny roasts of any GitHub user's public repositories. Enter a username, pick a roast style, and watch Gemini AI tear apart years of questionable coding decisions.
+An AI-powered web app that generates brutally funny roasts of any GitHub user's public repositories. Enter a username, pick a roast style and watch Gemini AI tear apart years of questionable coding decisions.
 
 **Live demo:** [git-hub-roast-master--rexhajafrore02.replit.app](https://git-hub-roast-master--rexhajafrore02.replit.app/)
 
-[![Deploy on Replit](https://img.shields.io/badge/Deploy%20on-Replit-F26207?style=for-the-badge&logo=replit&logoColor=white)](https://replit.com/new/github/afrorerexhaj/roast-my-github)
+
 
 ---
 
@@ -12,14 +12,14 @@ An AI-powered web app that generates brutally funny roasts of any GitHub user's 
 
 1. User enters a GitHub username
 2. The app fetches their public repositories via the GitHub API
-3. Gemini AI reads the repo names, languages, star counts, descriptions, and fork status
+3. Gemini AI reads the repo names, languages, star counts, descriptions and fork status
 4. It generates a personalised roast in one of four styles:
    - **Normal** — sharp, witty, conversational
    - **Corporate Jargon** — passive-aggressive performance review speak
    - **Pirate** — arr, shiver me timbers, nautical humiliation
    - **Haiku** — 5-7-5 syllable roasting, one repo at a time
 
-Results include the user's avatar, repo count, the roast itself, and a "Prime Offenders" grid of their top repositories by stars.
+Results include the user's avatar, repo count, the roast itself and a "Prime Offenders" grid of their top repositories by stars.
 
 ---
 
@@ -100,7 +100,7 @@ pnpm --filter @workspace/api-spec run codegen
 The AI prompt is constructed server-side in `artifacts/api-server/src/routes/roast/index.ts`. It includes:
 
 - The GitHub username
-- A list of up to 15 repos with name, language, star count, description, and whether it's a fork
+- A list of up to 15 repos with name, language, star count, description and whether it's a fork
 - Total repo count and fork count
 - Style-specific instructions injected per roast type
 
@@ -118,9 +118,9 @@ Their repositories:
 Write a roast that:
 - References specific repos, languages, or patterns you notice
 - Comments on things like: too many forks, abandoned projects, weird naming, lack of stars, obsessive use of one language
-- Is funny and creative, not generic
+- Is funny and creative not generic
 - Is 2-4 paragraphs (or haiku format if haiku style)
-- Is not racist, sexist, or genuinely hurtful — keep it about the code
+- Is not racist, sexist or genuinely hurtful — keep it about the code
 ```
 
 Style instructions per mode:
@@ -130,7 +130,7 @@ Style instructions per mode:
 | Normal | Sharp, witty, casual conversational tone |
 | Corporate | Obnoxious buzzwords — "synergize", "low-hanging fruit", passive-aggressive perf review |
 | Pirate | Full pirate speak — "Arr!", "Shiver me timbers!", nautical metaphors throughout |
-| Haiku | 3–5 haikus in 5-7-5 structure, each roasting a different aspect, each with a title |
+| Haiku | 3–5 haikus in 5-7-5 structure, each roasting a different aspect each with a title |
 
 ---
 
@@ -140,7 +140,7 @@ This app was built using [Replit Agent](https://replit.com/agent). Below are the
 
 **Prompt 1 — Initial build:**
 
-> Build a "Roast My GitHub" web app. The user enters a GitHub username, the app fetches their public repos using the GitHub API, then generates a funny roast based on their repos using the Gemini API (gemini-1.5-flash model). Include roast style options: Normal, Corporate Jargon, Pirate, and Haiku. Show a loading state while fetching. Handle errors gracefully (user not found, private profile, etc). Make the UI dark themed and fun looking.
+> Build a "Roast My GitHub" web app. The user enters a GitHub username, the app fetches their public repos using the GitHub API then generates a funny roast based on their repos using the Gemini API (gemini-1.5-flash model). Include roast style options: Normal, Corporate Jargon, Pirate and Haiku. Show a loading state while fetching. Handle errors gracefully (user not found, private profile, etc). Make the UI dark themed and fun looking.
 
 **Fix 1 — Gemini model not found:**
 
@@ -160,19 +160,19 @@ Removed the subtitle `<motion.p>` element entirely and changed the username inpu
 
 ## What I'd Do With More Time
 
-**Better GitHub data.** The current implementation only uses repo names, languages, star counts, and descriptions. With more time I'd pull in commit frequency, language breakdown percentages, longest streak without a commit, README quality score, and issue/PR activity — the more data, the more personalised and savage the roast.
+**Better GitHub data.** The current implementation only uses repo names, languages, star counts and descriptions. With more time I'd pull in commit frequency, language breakdown percentages, longest streak without a commit, README quality score, and issue/PR activity — the more data the more personalised and savage the roast.
 
 **Rate limiting and caching.** Right now every request hits both the GitHub API and Gemini with no throttling. I'd add Redis-backed caching (same username + style = cached roast for 10 minutes) and rate limiting per IP to prevent abuse and runaway API costs.
 
 **Shareable roast cards.** Generate an OG image (avatar + roast excerpt) that users can share to Twitter/X or copy as a link. `@vercel/og` or Puppeteer could render a styled card server-side.
 
-**GitHub OAuth.** Let users sign in with GitHub so the app can access slightly more data (e.g. private repo count, contribution graph) for a richer roast, while still only ever roasting public information.
+**GitHub OAuth.** Let users sign in with GitHub so the app can access slightly more data (e.g. private repo count, contribution graph) for a richer roast while still only ever roasting public information.
 
-**Streaming output.** Switch Gemini from `generateContent` to `generateContentStream` so the roast text types out word by word instead of appearing all at once — much more dramatic and satisfying.
+**Streaming output.** Switch Gemini from `generateContent` to `generateContentStream` so the roast text types out word by word instead of appearing all at once much more dramatic and satisfying.
 
-**Roast leaderboard.** Store generated roasts in a database and let users upvote their favourites. Show a public feed of the most-roasted repos and the most brutal roasts of the week.
+**Roast leaderboard.** Store generated roasts in a database and let users upvote their favourites. Show a public feed of the mostroasted repos and the most brutal roasts of the week.
 
-**More styles.** Shakespearean English, Gen Z slang, formal academic paper abstract, motivational speaker, legal cease-and-desist — the style system is already designed to be extensible.
+**More styles.** Shakespearean English, Gen Z slang, formal academic paper abstract, motivational speaker, legal cease-and-desist the style system is already designed to be extensible.
 
 ---
 
